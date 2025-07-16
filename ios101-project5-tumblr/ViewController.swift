@@ -44,14 +44,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let blog = try JSONDecoder().decode(Blog.self, from: data)
 
                 DispatchQueue.main.async { [weak self] in
+                    
+                    self?.posts = blog.response.posts
 
-                    let posts = blog.response.posts
+                    
 
 
-                    print("✅ We got \(posts.count) posts!")
-                    for post in posts {
+                    print("✅ We got \(self?.posts.count ?? 0) posts!")
+                    for post in self?.posts ?? [] {
                         print("🍏 Summary: \(post.summary)")
                     }
+                    self?.tableView.reloadData()
                 }
 
             } catch {
@@ -67,6 +70,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
             let post = posts[indexPath.row]
             
