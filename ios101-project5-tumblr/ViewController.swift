@@ -4,7 +4,7 @@
 //
 
 import UIKit
-import Nuke
+import NukeExtensions
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
@@ -17,9 +17,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        
-
-        
         fetchPosts()
     }
 
@@ -66,13 +63,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 50
+            return posts.count
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = UITableViewCell()
-            cell.textLabel?.text = "Row \(indexPath.row)"
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
+            let post = posts[indexPath.row]
+            
+            cell.postTextLabel.text = post.summary
+            
+            if let photo = post.photos.first {
+                let url = photo.originalSize.url
+                NukeExtensions.loadImage(with: url, into: cell.postImageView)
+            }
             return cell
+
         }
     
 }
