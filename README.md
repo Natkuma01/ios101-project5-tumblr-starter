@@ -11,28 +11,32 @@ Time spent: 4 hours spent in total
 
 The following **required** functionality is completed:
 
-- [ ] App has a configured table view and table view call
-- [ ] App populates the table view with data fetched from an API
+- ✅ App has a configured table view and table view call
+- ✅ App populates the table view with data fetched from an API
 
 
 The following **optional** features are implemented:
 
-- [ ] App fetches posts from a different Tumblr blog
-- [ ] App has a refresh control to update the table view
+- ❌ App fetches posts from a different Tumblr blog
+- ❌ App has a refresh control to update the table view
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- Fix the interface and add proper contraints 
 
 ## Video Walkthrough
-
-Here is a reminder on how to embed Loom videos on GitHub. Feel free to remove this reminder once you upload your README. 
-
-[Guide](https://www.youtube.com/watch?v=GA92eKlYio4) .
+<div>
+    <a href="https://www.loom.com/share/8e946a7595ab4090959a2c0bd18de8cc">
+      <p>Loom Message - 16 July 2025 - Watch Video</p>
+    </a>
+    <a href="https://www.loom.com/share/8e946a7595ab4090959a2c0bd18de8cc">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/8e946a7595ab4090959a2c0bd18de8cc-c3601910d7b15290-full-play.gif">
+    </a>
+  </div>
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+One of the challenges I faced during development was forgetting to call reloadData() on the table view, which caused the data to not display in the Swift app. I also encountered a connection issue between the IBOutlet and the custom PostCell, which took some time to debug. However, the biggest hurdle for me has been setting up Auto Layout constraints correctly. Although I’m still trying to fully understand it, I’ve managed to stop views from overlapping—for now, that’s the best I’ve been able to achieve.
 
 ## License
 
